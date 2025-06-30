@@ -15,7 +15,7 @@ var DB *pgxpool.Pool
 func InitDatabase() error {
 	var err1, err2 error
 	env := envs.ServerEnvs
-	uri := fmt.Sprintf("user=%s password=%s host=%s port=%s dbname=%s sslmode=%s", env.POSTGRES_HOST, env.POSTGRES_USER, env.POSTGRES_PASSWORD, env.POSTGRES_NAME, env.POSTGRES_PORT, env.POSTGRES_USE_SSL)
+	uri := fmt.Sprintf("user=%s password=%s host=%s port=%s dbname=%s sslmode=%s", env.POSTGRES_USER, env.POSTGRES_PASSWORD, env.POSTGRES_HOST, env.POSTGRES_PORT, env.POSTGRES_NAME, env.POSTGRES_USE_SSL)
 	config, err1 := pgxpool.ParseConfig(uri)
 	if err1 != nil {
 		log.Fatalf("Не удалось распарсить строку подключения: %v\n", err1)

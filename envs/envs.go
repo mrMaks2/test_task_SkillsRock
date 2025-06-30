@@ -1,7 +1,10 @@
 package envs
 
 import (
+
 	"os"
+	"github.com/joho/godotenv"
+	
 )
 
 var ServerEnvs Envs
@@ -18,6 +21,10 @@ type Envs struct {
 }
 
 func LoadEnvs() error {
+
+	if err := godotenv.Load(); err != nil {
+		return err
+	}
 
 	ServerEnvs.POSTGRES_USER = os.Getenv("POSTGRES_USER")
 	ServerEnvs.POSTGRES_PASSWORD = os.Getenv("POSTGRES_PASSWORD")
