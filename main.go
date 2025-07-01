@@ -8,5 +8,5 @@ func init() {
 
 func main() {
 	server.StartServer()
-	server.applyMigrations()
+	server.ApplyMigrations()
 }

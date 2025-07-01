@@ -20,7 +20,9 @@ services:
       - server_net
   tasks:
     container_name: tasks
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - db_tasks
     networks:
@@ -32,6 +34,11 @@ services:
       POSTGRES_NAME: ${POSTGRES_NAME}
       POSTGRES_HOST: ${POSTGRES_HOST}
       POSTGRES_USE_SSL: ${POSTGRES_USE_SSL}
+      CONN_HOST: ${CONN_HOST}
+    ports:
+      - ${CONN_HOST}:${CONN_HOST}
+    volumes:
+      - .:/tasks
 
 volumes:
   db_tasks_vol: {}
