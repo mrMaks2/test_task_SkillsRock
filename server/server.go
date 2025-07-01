@@ -1,14 +1,18 @@
 package server
 
 import (
-	"errors"
-	"fmt"
+	// "errors"
+	// "fmt"
 	"log"
+
+	// "net/url"
+
+	// "github.com/golang-migrate/migrate/v4"
+	// _ "github.com/golang-migrate/migrate/v4/database/postgres"
+	// _ "github.com/golang-migrate/migrate/v4/source/file"
+	// _ "github.com/lib/pq"
 	"test_task_SkillsRock/database"
 	"test_task_SkillsRock/envs"
-
-	"github.com/golang-migrate/migrate/v4"
-	_ "github.com/lib/pq"
 )
 
 func InitServer() {
@@ -34,23 +38,30 @@ func StartServer() {
 	InitRoutes()
 }
 
-func ApplyMigrations() {
+// func ApplyMigrations() {
 
-	env := envs.ServerEnvs
-	databaseURL := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=%s", env.POSTGRES_USER, env.POSTGRES_PASSWORD, env.POSTGRES_HOST, env.POSTGRES_PORT, env.POSTGRES_NAME, env.POSTGRES_USE_SSL)
+// 	env := envs.ServerEnvs
+// 	databaseURL := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=%s", env.POSTGRES_USER, env.POSTGRES_PASSWORD, env.POSTGRES_HOST, env.POSTGRES_PORT, env.POSTGRES_NAME, env.POSTGRES_USE_SSL)
 
-	m, err := migrate.New(
-		"file://database/migrations",
-		databaseURL)
-	if err != nil {
-		log.Fatalf("Ошибка создания экземпляра миграции:", err)
-	}
+// 	// parsedURL, err := url.Parse(databaseURL)
+// 	// if err != nil {
+// 	// 	log.Fatalf("Ошибка парсинга URL: %v", err)
+// 	// 	return
+// 	// }
 
-	err = m.Up()
-	if err != nil && !errors.Is(err, migrate.ErrNoChange) {
-		log.Fatalf("Ошибка применения миграций: %v", err)
-	}
+// 	m, err := migrate.New(
+// 		"file://database/migrations",
+// 		databaseURL)
+// 	// parsedURL.String())
+// 	if err != nil {
+// 		log.Fatalf("Ошибка создания экземпляра миграции:", err)
+// 	}
 
-	log.Println("Миграции успешно применены!")
+// 	err = m.Up()
+// 	if err != nil && !errors.Is(err, migrate.ErrNoChange) {
+// 		log.Fatalf("Ошибка применения миграций: %v", err)
+// 	}
 
-}
+// 	log.Println("Миграции успешно применены!")
+
+// }

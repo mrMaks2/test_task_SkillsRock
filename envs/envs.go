@@ -1,8 +1,8 @@
 package envs
 
 import (
-	"os"
 	// "github.com/joho/godotenv"
+	"os"
 )
 
 var ServerEnvs Envs
