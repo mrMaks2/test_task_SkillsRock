@@ -27,6 +27,17 @@
     ```bash
     docker-compose up --build
     ```
+4. **Установите инструмент:**
+
+    ```bash
+    go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate
+    ```
+
+5. **Примените миграции:**
+
+    ```bash
+    migrate -database "postgres://maks:maks@localhost:3001/postgres?sslmode=disable" -path database/migrations up
+    ```
 
 4.  **Для остановки проекта используйте команду:**
 
